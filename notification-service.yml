@@ -1,0 +1,38 @@
+spring:
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:smartsureinsurancesys@gmail.com}
+    password: ${MAIL_PASSWORD:awxf aowe zkvc pfua}
+    properties:
+      mail:
+        smtp:
+          auth: ${SPRING_MAIL_SMTP_AUTH:true}
+          starttls:
+            enable: ${SPRING_MAIL_SMTP_STARTTLS_ENABLE:true}
+            required: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:localhost}
+    port: ${SPRING_RABBITMQ_PORT:5672}
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+smartsure:
+  mail:
+    from: ${SMARTSURE_MAIL_FROM:${MAIL_USERNAME:smartsureinsurancesys@gmail.com}}
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_SERVER_URL:http://localhost:9411/api/v2/spans}
+  endpoints:
+    web:
+      exposure:
+        include: "*"
